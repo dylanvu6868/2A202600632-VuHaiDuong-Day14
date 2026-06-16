@@ -1,0 +1,78 @@
+{
+  "metadata": {
+    "version": "Agent_V2_Optimized",
+    "total": 55,
+    "timestamp": "2026-06-16 13:26:31",
+    "elapsed_seconds": 1.02,
+    "throughput_cases_per_sec": 53.9
+  },
+  "metrics": {
+    "avg_score": 3.9909,
+    "pass_rate": 0.8,
+    "hit_rate": 0.6727,
+    "avg_mrr": 0.5273,
+    "faithfulness": 0.554,
+    "relevancy": 0.4726,
+    "agreement_rate": 0.9236,
+    "cohens_kappa": 0.4557
+  },
+  "retrieval_quality_correlation": {
+    "description": "Mối liên hệ Retrieval Quality → Answer Quality",
+    "cases_hit": 37,
+    "cases_miss": 18,
+    "avg_judge_score_when_hit": 4.2568,
+    "avg_judge_score_when_miss": 3.4444,
+    "score_lift_from_retrieval": 0.8123,
+    "avg_faithfulness_when_hit": 0.6078,
+    "avg_faithfulness_when_miss": 0.4435
+  },
+  "multi_judge_stats": {
+    "judges": [
+      "gpt-4o",
+      "claude-sonnet-3-5"
+    ],
+    "total_evaluations": 110,
+    "conflict_cases": 1,
+    "conflict_rate": 0.0182,
+    "cohens_kappa": 0.4557,
+    "kappa_interpretation": "moderate",
+    "conflict_resolution": "average_score_with_flag"
+  },
+  "cost_report": {
+    "model_used": "gpt-4o",
+    "total_tokens": 45100,
+    "breakdown": {
+      "generation_tokens": 12100,
+      "generation_cost_usd": 0.0605,
+      "judge_gpt4o_tokens": 8250,
+      "judge_gpt4o_cost_usd": 0.04125,
+      "judge_claude_tokens": 8250,
+      "judge_claude_cost_usd": 0.02475,
+      "retrieval_cost_usd": 0.0
+    },
+    "estimated_cost_usd": 0.1265,
+    "cost_per_case_usd": 0.0023,
+    "optimization_potential": {
+      "hybrid_mini_large": 0.03795,
+      "savings_pct": "70%",
+      "method": "GPT-4o-mini cho easy cases, GPT-4o chỉ cho conflict/borderline"
+    }
+  },
+  "pass_fail": {
+    "pass": 44,
+    "fail": 11
+  },
+  "regression": {
+    "v1_version": "Agent_V1_Base",
+    "v2_version": "Agent_V2_Optimized",
+    "gate_decision": {
+      "decision": "ALERT",
+      "reason": "V2 cải thiện score (+0.236) nhưng Hit Rate 67.3% < 75%. Cần cải thiện retrieval.",
+      "delta_score": 0.2364,
+      "delta_hit_rate": 0.0,
+      "delta_faithfulness": 0.023,
+      "v1_score": 3.7545,
+      "v2_score": 3.9909
+    }
+  }
+}
